@@ -1,0 +1,429 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+//PIA simulador pagina de videojuegos
+
+#include <iostream>
+#include <conio.h>
+#include <string.h>
+#include <string>
+#include <stdio.h>
+#include <fstream>
+#include <stdlib.h>
+#include <math.h> //calculos mate
+
+using namespace std; 
+//declaracion de variables
+int alta2;
+
+struct Tienda               //estructura de datos
+{
+      char nombre,descripcion,genero,caracteristicas;
+      int nombre,precio,articulo,lanzamiento,clasificacion,consola;
+};
+
+
+int contador,alta,desicion;
+
+Tienda *ARTICULOS;  // puntero
+
+//funciones con void
+void Alta();
+void listas();
+void eliminar();
+void modificar();
+void archivos();
+
+int main()         //Entrada de datos
+
+{
+	int opc;
+
+    printf( "\t\t\t******MENU DE OPCIONES******\n");
+	printf( "1.Alta.\n");
+	printf( "2.Lista\n");
+	printf( "3.Limpiar pantalla\n");
+	printf( "4.Modificar\n");
+	printf( "5.Eliminar\n");
+	printf( "6.Salir-Next\n");
+	scanf_s("%d", &opcion);
+
+    switch (opc)
+    {
+        case 1:                                                                              //1.Alta
+		for(int i=0; i<3;i++)
+		{
+			printf("Hola,buen dia\n");
+			cin.ignore();
+			printf("\n---------------------------\n");
+
+			printf("Teclea el nombre del articulo que deseas dar de alta\n");
+			cin.ignore();
+			gets_s(articulo[i].nombre);
+
+			printf("Teclea una breve descripcion del articulo\n");
+			getline(cin, articulo[i].descripcion);
+
+			printf("Teclea el genero:\n");
+			gets_s(articulo[i].genero);
+
+			printf("Teclea codigo del articulo\n");
+			scanf_s("%d", &articulo[i].codigo);
+
+			printf("Teclea el precio del articulo\n");
+			scanf_s("%f", &articulo[i].precio);
+
+            printf("Teclea el numero del articulo\n");
+			scanf_s("%f", &articulo[i].numero);
+
+            printf("Teclea el año de lanzamiento\n");
+			scanf_s("%f", &articulo[i].lanzamiento);
+
+            printf("Teclea la clasificacion\n");
+			scanf_s("%f", &articulo[i].clasificacion);
+
+            printf("Teclea la consola\n");
+			scanf_s("%f", &articulo[i].consola);
+
+            printf("Teclea las caracteristicas\n");
+			cin.ignore();
+			gets_s(articulo[i].caracteristicas);
+            
+        }
+
+        case 2:                                                                                //2.Lista
+		    printf("\t\t\t\t*****LISTA*****\n");
+		    printf("\n---------------------------\n");
+		    for (int i = 0; i < 3; i++)
+		   {
+			 printf("NOMBRE: %s\n", articulo[i].nombre);
+			 printf("CODIGO: %d\n", articulo[i].codigo);
+			 printf("DESCRIPCION: %s\n",articulo[i].descripcion.c_str());
+			 printf("GENERO: %s\n", articulo[i].genero);
+			 printf("PRECIO: %f\n", articulo[i].precio + articulo[i].precio * 0.16);
+             printf("NUMERO: %s\n", articulo[i].numero);
+            }
+
+        case 3:                                                                                //3.Limpiar pantalla
+		system("cls");
+		break;
+
+        case 4:                                                                                //4.Modificar
+        printf("\t\t\t\t*****Modificador*****\n");
+		printf("\n---------------------------\n");
+		for (int i = 0; i < 3; i++)
+		{
+			printf("ingrese el numero registro a modificar: %s\n", articulo[i].numero);
+            scanf_s("%f", &articulo[i].numrto);
+            j = j - 1;
+            }
+            for (int i = j; i == j; i++)
+		      if (ARTICULOS[i].status == "ELIMINADO")
+		    {
+			printf( "REGISTRO ELIMINADO\n")
+			printf("ingrese un registro valido \n");
+		}
+	    
+        
+        case 5:                                                                                  //5.Eliminar
+        printff("%c",24);
+        break;
+
+        case 6:                                                                                   //6.Salida                    
+        exit(1);
+	    default:
+		return main();
+		break;          
+   }
+
+}
+
+void Alta()                                                                                       //void Alta
+{
+	printf("Teclea los registros desea dar de alta \n");
+	scanf("%d", &alta);
+    ARTICULOS = new Tienda[alta]; 
+
+    
+    for (int i = 0; i < alta; i++)
+	{
+
+		printf("Ingrese el nombre del articulo\n");
+        scanf_s ("%d", &ARTICULOS[i].nombre);
+        while (getchar() != '\n');
+		
+        printf("Ingrese descripcion del articulo\n");
+		getline(cin, ARTICULOS[i].descripcion); 
+        
+        printf("Ingrese genero\n");
+        scanf_s ("%d", &ARTICULOS[i].genero);
+
+        printf("Ingrese codigo\n");
+        scanf_s ("%d", &ARTICULOS[i].codigo);
+
+        printf("Ingrese precio\n");
+        scanf_s ("%d", &ARTICULOS[i].precio);
+
+        printf("Ingrese numero\n");
+        scanf_s ("%d", &ARTICULOS[i].numero);
+
+        printf("Ingrese año de lanzamiento\n");
+        scanf_s ("%d", &ARTICULOS[i].lanzamiento);
+
+        printf("Ingrese clasificacion\n");
+        scanf_s ("%d", &ARTICULOS[i].clasificacion);
+
+        printf("Ingrese consola\n");
+        scanf_s ("%d", &ARTICULOS[i].consola);
+
+        printf("Ingrese sus caracteristicas\n");
+		getline(cin, ARTICULOS[i].caracteristicas);
+
+	}
+}
+void listas()                                                                                      //void listas 
+{
+	for (int i = 0; i < alta; i++)
+	{
+		//if (nombre[i] == 0)
+		if(ARTICULO[i].status == "ELIMINADO")
+		{
+			printf("REGISTRO ELIMINADO,i + 1\n"); 
+		}
+		else
+		{
+			printf(" registro,i + 1\n"); 
+			printf("ARTICULO[i].nombre\n");
+			printf("ARTICULO[i].descripcion\n");
+			printf("ARTICULO[i].genero\n");
+			printf("ARTICULO[i].codigo\n");
+            printf("ARTICULO[i].precio\n");
+            printf("ARTICULO[i].numero\n");
+            printf("ARTICULO[i].lanzamiento\n");
+            printf("ARTICULO[i].clasificacion\n");
+            printf("ARTICULO[i].consola\n");
+            printf("ARTICULO[i].caracteristicas\n");
+		}
+	}
+}
+void eliminar()                                                                                     //void eliminar
+{
+	int j;
+	printf("ingrese el  registro a eliminar\n");
+	scanf("%d", &j);
+	j = j - 1;
+	for (int i = j; i == j; i++)
+	{
+		printf("Eliminando registro,j + 1\n");
+		ARTICULO[i].status = "ELIMINADO";
+		//
+		nombre[i] = 0;
+		descripcion[i] = 0;
+		genero[i] = 0;
+		codigo[i] = 0;
+        precio[i] = 0;
+        numero[i] = 0;
+        lanzamiento[i] = 0;
+        clasificacion[i] = 0;
+        consola[i] = 0;
+        caracteristicas[i] = 0;
+		//
+	}
+}
+void modificar()                                     
+{
+	int j, opcion, op2;
+	do
+	{ 
+	 printf("ingrese el numero registro a modificar\n");
+	 scanf("%d", &j);
+	 j = j - 1;
+     for (int i = j; i == j; i++)
+	{
+		if ((ARTICULO[i].status == "ELIMINADO"))
+		{
+			printf("REGISTRO ELIMINADO,i + 1\n");
+			printf("ingrese un registro valido \n");
+			op2 = 1;
+        }    
+        else
+		{
+			op2 = 2;
+		}
+    }
+
+    while (op2 == 1);
+	printf("ingrese que desea modificar 1.-Matricula,2.-Nombre, 3.- Calf\n");
+    scanf("%d", &opcion);
+
+	switch (opcion)
+    {
+	  case 1:
+		for (int i = j; i == j; i++)
+		{
+			printf("Ingrese nombre\n");
+            scanf_s ("%d", &ARTICULOS[i].nombre);
+		}
+		break;
+
+      case 2:
+		for (int i = j; i == j; i++)
+		{
+			while (getchar() != '\n');
+			printf("Ingrese descripcion\n");
+			getline(cin, ARTICULO[i].descripcion);  
+		}
+		break;
+
+      case 3:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese genero\n");
+            scanf_s ("%d", &ARTICULOS[i].genero);
+		}
+        break;
+
+      case 4:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese genero\n");
+            scanf_s ("%d", &ARTICULOS[i].genero);
+		}
+        break;
+
+        case 5:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese precio\n");
+            scanf_s ("%d", &ARTICULOS[i].precio);
+		}
+        break;
+
+        case 5:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese numero\n");
+            scanf_s ("%d", &ARTICULOS[i].numero);
+		}
+        break;
+
+        case 6:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese año de lanzamiento\n");
+            scanf_s ("%d", &ARTICULOS[i].lanzamiento);
+		}
+        break;
+
+        case 7:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese clasificacion\n");
+            scanf_s ("%d", &ARTICULOS[i].clasificacion);
+		}
+        break;
+
+        case 8:
+		for (int i = j; i == j; i++)
+		{
+            ("Ingrese consoprintfla\n");
+            scanf_s ("%d", &ARTICULOS[i].consola);
+		}
+        break;
+
+        case 9:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese clasificacion\n");
+            scanf_s ("%d", &ARTICULOS[i].clasificacion);
+		}
+        break;
+
+        case 9:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese clasificacion\n");
+            scanf_s ("%d", &ARTICULOS[i].clasificacion);
+		}
+        break;
+
+        case 10:
+		for (int i = j; i == j; i++)
+		{
+            printf("Ingrese caracteristicas\n");
+            scanf_s ("%d", &ARTICULOS[i].caracteristicas);
+		}
+        break;
+
+    }
+}
+void archivos()                                                                                              //void archivos
+{
+    ofstream archivo;
+	string nombrearchivo;
+	int texto;
+	string texto2; 
+    
+    nombrearchivo = "altasarticulos.txt";
+
+    archivo.open(nombrearchivo.c_str(), ios::out);
+
+    if (archivo.fail())
+	{
+        printf("ERROR NO SE PUDO CREAR EL ARCHIVO\n");
+		exit(1);
+	}
+
+    archivo << "nombre" << "\t";
+	archivo << "descripcion" << "\t";
+	archivo << "genero" << "\t";
+	archivo << "codigo" << "\t";
+	archivo << "precio" << "\t";
+	archivo << "numero" << "\n";
+    archivo << "lanzamiento" << "\n";
+    archivo << "clasificacion" << "\n";
+    archivo << "consola" << "\n";
+    archivo << "caracteristicas" << "\n";
+
+
+    for (int i = 0; i < alta; i++)
+	{
+		 if (ARTICULO[i].status == "ELIMINADO")
+		{
+			 texto2 = "REGISTRO ELIMINADO ";
+			 texto = i;
+			 archivo << texto2 << texto << "\n";
+		}
+        else
+		{
+            texto = ARTICULO[i].nombre;
+			archivo << texto << "\t" << "\t";
+			texto2 = ARTICULO[i].descripcion;
+			archivo << texto2 << "\t" << "\t";
+			texto = ARTICULO[i].genero;
+			archivo << texto << "\t " << "\t";
+			texto = ARTICULO[i].codigo;
+			archivo << texto << "\t " << "\t";
+            texto = ARTICULO[i].precio;
+			archivo << texto << "\t" << "\t";
+            texto = ARTICULO[i].numero;
+			archivo << texto << "\t" << "\t";
+            texto = ARTICULO[i].lanzamiento;
+			archivo << texto << "\t" << "\t";
+            texto = ARTICULO[i].clasificacion;
+			archivo << texto << "\t" << "\t";
+            texto = ARTICULO[i].consola;
+			archivo << texto << "\t" << "\t";
+            texto = ARTICULO[i].caracteristicas;
+			archivo << texto << "\t" << "\t";
+        }
+
+    }
+
+    archivo.close();
+
+}   
